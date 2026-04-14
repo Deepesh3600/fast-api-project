@@ -70,3 +70,13 @@ def create_item(item: Item):
     }
     items_db.append(new_item)
     return {"data": new_item, "message": "Item created successfully", "status": "success"}
+
+@app.get("/random")
+def get_random():
+    """
+    Random endpoint - returns a static string for API availability checks.
+
+    Returns:
+        str: The plain string "random"
+    """
+    return "random"
