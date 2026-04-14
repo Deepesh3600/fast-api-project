@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
 app = FastAPI(
@@ -24,6 +25,16 @@ items_db = [
 def get_home_page():
     """Home page - returns a welcome message"""
     return {"message": "This is home page", "status": "success"}
+
+@app.get("/health")
+def health_check():
+    """
+    Health check endpoint.
+
+    Returns:
+        str: The plain string "service is healthy" with HTTP 200 and Content-Type: application/json
+    """
+    return JSONResponse(content="service is healthy", status_code=200)
 
 @app.get("/items")
 def get_all_items():
