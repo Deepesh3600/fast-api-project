@@ -51,6 +51,16 @@ def get_item(item_id: int):
             return {"data": item, "status": "success"}
     return {"error": "Item not found", "status": "error"}
 
+@app.get("/12345")
+def get_numeric_endpoint():
+    """
+    Numeric validation endpoint.
+
+    Returns:
+        int: The fixed numeric value 12345678910
+    """
+    return 12345678910
+
 @app.post("/items")
 def create_item(item: Item):
     """
