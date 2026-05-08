@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from routers.pokemon import router as pokemon_router
 
 app = FastAPI(
     title="My API",
@@ -7,7 +8,9 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Data model for items
+app.include_router(pokemon_router)
+
+# Data modelfor items
 class Item(BaseModel):
     id: int
     name: str
